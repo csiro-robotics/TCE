@@ -1,11 +1,11 @@
 # Temporally Coherent Embeddings for Self-Supervised Video Representation Learning
-This repository contains the code implementation used in the paper [Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE)](https://arxiv.org/abs/2004.02753).  Our contributions in this repository are:
+This repository contains the code implementation used in the paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE_Webpage/)]  Our contributions in this repository are:
 - A Pytorch implementation of the self-supervised training used in the TCE paper
 - Pre-trained checkpoints for models trained using the TCE self-supervised training paradigm
 - A Pytorch implementation of action-recognition fine-tuning on the UCF101 dataset using a stack-of-differences frame encoder for a given pre-trained checkpoint
 - A Pytorch implementation of t-SNE visualisations of the network output, which can be repurposed across any number of network architectures
 
-![Hero Image](images/TCE.png)
+![Network Architecture](images/TCE.png)
 
 We benchmark our code on Split 1 of the UCF101 action recognition dataset, providing pre-trained models for our downstream and upstream training.  See [Models](#models) for our provided models and Getting Started (LINK) for for instructions on training and evaluation.
 
