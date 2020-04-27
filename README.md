@@ -74,7 +74,7 @@ Lists containing the various train/test splits for UCF101 can be found in UCF_li
 ## Models
 | Architecture | Dataset / Split | Self-Supervised Checkpoint                                                                     | Action Recognition Checkpoint                                                                  | Accuracy |
 |--------------|-----------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------|
-| ResNet-50    | UCF101 Split 1  | [Download](https://cloudstor.aarnet.edu.au/plus/s/D5o3Ip8PQrZSFpM) | [Download](https://cloudstor.aarnet.edu.au/plus/s/0a4H0yfFGpLK0wr) | 66.67    |
+| ResNet-50    | UCF101 Split 1  | [Download](https://cloudstor.aarnet.edu.au/plus/s/D5o3Ip8PQrZSFpM) | [Download](https://cloudstor.aarnet.edu.au/plus/s/0a4H0yfFGpLK0wr) | 67.01    |
 | ResNet-101   | UCF101 Split 1  | [Download](https://cloudstor.aarnet.edu.au/plus/s/cprZhEwvSbAg2mV) | [Download](https://cloudstor.aarnet.edu.au/plus/s/Qb0u9f0rMoEaz9K) | 68.7     |
 
 
