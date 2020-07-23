@@ -10,16 +10,16 @@ This repository contains the code implementation used in the paper Temporally Co
 We benchmark our code on the UCF101 and HDMB action recognition dataset, providing pre-trained models for our self-supervised downstream and supervised upstream training.  See [Models](#models) for our provided models and [Getting Started](#getting-started) for for instructions on training and evaluation.
 
 If you find this repo useful for your research, please consider citing the paper
- ```
+```
 @misc{knights2020tce,
     title={Temporally Coherent Embeddings for Self-Supervised Video Representation Learning},
-    author={Joshua Knights and Anthony Vanderkop and Daniel Ward and Olivia Mackenzie-Ross and Peyman Moghadam},
+    author={Joshua Knights and Ben Harwood and Daniel Ward and Anthony Vanderkop and Olivia Mackenzie-Ross and Peyman Moghadam},
     year={2020},
     eprint={2004.02753},
     archivePrefix={arXiv},
     primaryClass={cs.CV}
 }
- ```
+```
 
 
 
