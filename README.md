@@ -1,5 +1,5 @@
 # Temporally Coherent Embeddings for Self-Supervised Video Representation Learning
-This repository contains the code implementation used in the paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE_Webpage/)]  Our contributions in this repository are:
+This repository contains the code implementation used in the paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE-Webpage/)]  Our contributions in this repository are:
 - A Pytorch implementation of the self-supervised training used in the TCE paper
 - Pre-trained checkpoints for models trained using the TCE self-supervised training paradigm
 - A Pytorch implementation of action-recognition fine-tuning on the UCF101 dataset using a stack-of-differences frame encoder for a given pre-trained checkpoint
@@ -7,7 +7,7 @@ This repository contains the code implementation used in the paper Temporally Co
 
 ![Network Architecture](images/TCE.png)
 
-We benchmark our code on Split 1 of the UCF101 action recognition dataset, providing pre-trained models for our downstream and upstream training.  See [Models](#models) for our provided models and Getting Started (LINK) for for instructions on training and evaluation.
+We benchmark our code on the UCF101 and HDMB action recognition dataset, providing pre-trained models for our self-supervised downstream and supervised upstream training.  See [Models](#models) for our provided models and [Getting Started](#getting-started) for for instructions on training and evaluation.
 
 If you find this repo useful for your research, please consider citing the paper
  ```
@@ -25,7 +25,7 @@ If you find this repo useful for your research, please consider citing the paper
 
 ## Updates
 - 23/04/2020 : Initial Commit
-
+- 23/07/2020 : Updated Results, removed fine-tuning code
 
 
 ## Table of Contents
@@ -72,11 +72,11 @@ Lists containing the various train/test splits for UCF101 can be found in UCF_li
 <a name="models"></a>
 
 ## Models
-| Architecture | Dataset / Split | Self-Supervised Checkpoint                                                                     | Action Recognition Checkpoint                                                                  | Accuracy |
-|--------------|-----------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------|
-| ResNet-50    | UCF101 Split 1  | [Download](https://cloudstor.aarnet.edu.au/plus/s/D5o3Ip8PQrZSFpM) | [Download](https://cloudstor.aarnet.edu.au/plus/s/0a4H0yfFGpLK0wr) | 67.01    |
-| ResNet-101   | UCF101 Split 1  | [Download](https://cloudstor.aarnet.edu.au/plus/s/cprZhEwvSbAg2mV) | [Download](https://cloudstor.aarnet.edu.au/plus/s/Qb0u9f0rMoEaz9K) | 68.7     |
-
+| Architecture | Pre-Training Dataset | Pre-Training Checkpoint | Accuracy (UCF101) | Fine-Tuned Checkpoint (UCF101) | Accuracy  (HMDB51) | Fine-Tuned Checkpoint (HMDB51) |
+|--------------|----------------------|-------------------------|-------------------|--------------------------------|--------------------|--------------------------------|
+| 2D ResNet-18 | UCF101               | #TODO                   | 68.2              | #TODO                          | 31.7               | #TODO                          |
+| 2D ResNet-18 | Kinetics400          | #TODO                   | 68.8              | #TODO                          | 34.2               | #TODO                          |
+| 2D ResNet-50 | Kinetics400          | #TODO                   | 71.2              | #TODO                          | 36.6               | #TODO                          |
 
 ## Getting Started
 
@@ -84,7 +84,8 @@ Lists containing the various train/test splits for UCF101 can be found in UCF_li
 Code for self-supervised pretraining using TCE will be released at a future date. 
 
 ### Fine-tuning for action recognition
-We provide `finetune.py` for fine-tuning the network on the UCF101 action recognition dataset from an existing checkpoint, such as imagenet pre-training or our self-supervised training.
+Code for finetuning the model will be provided at a later date
+<!-- We provide `finetune.py` for fine-tuning the network on the UCF101 action recognition dataset from an existing checkpoint, such as imagenet pre-training or our self-supervised training.
 
 #### Flags
 The following flags can be used to adjust the configuration of the fine-tuning:
@@ -107,7 +108,7 @@ Run the finetune script in training mode with the following command:
 ```
 python finetune.py --model resnet50 --split 01 --weights /path/to/weights.pth --savedir /path/to/savedir 
 ```
-
+ -->
 
 
 ### Visualisation
