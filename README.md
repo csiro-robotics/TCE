@@ -72,12 +72,11 @@ Lists containing the various train/test splits for UCF101 can be found in UCF_li
 <a name="models"></a>
 
 ## Models
-| Architecture | Pre-Training Dataset | Pre-Training Checkpoint | Accuracy (UCF101) | Fine-Tuned Checkpoint (UCF101) | Accuracy  (HMDB51) | Fine-Tuned Checkpoint (HMDB51) |
-|--------------|----------------------|-------------------------|-------------------|--------------------------------|--------------------|--------------------------------|
-| 2D ResNet-18 | UCF101               | #TODO                   | 68.2              | #TODO                          | 31.7               | #TODO                          |
-| 2D ResNet-18 | Kinetics400          | #TODO                   | 68.8              | #TODO                          | 34.2               | #TODO                          |
-| 2D ResNet-50 | Kinetics400          | #TODO                   | 71.2              | #TODO                          | 36.6               | #TODO                          |
-
+| Architecture | Pre-Training<br>Dataset | Pre-Training<br>Checkpoint | Accuracy<br>(UCF101) | Fine-Tuned<br>Checkpoint (UCF101) | Accuracy <br>(HMDB51) | Fine-Tuned<br>Checkpoint (HMDB51) |
+|-|-|-|-|-|-|-|
+| 2D ResNet-18 | UCF101 | [Link](https://cloudstor.aarnet.edu.au/plus/s/jWa1oIIjA1DHNTT) | 68.2 | [Link](https://cloudstor.aarnet.edu.au/plus/s/vzJWhMgtbB84BUB) | 31.7 | [Link](https://cloudstor.aarnet.edu.au/plus/s/H9uvE3qSGJkaiRx) |
+| 2D ResNet-18 | Kinetics400 | [Link](https://cloudstor.aarnet.edu.au/plus/s/YbizJL2ajcTNl7y) | 68.8 | [Link](https://cloudstor.aarnet.edu.au/plus/s/ZVNIVc2PEFlzwe7) | 34.2 | [Link](https://cloudstor.aarnet.edu.au/plus/s/n1fSsElvTzaXsmV) |
+| 2D ResNet-50 | Kinetics400 | [Link](https://cloudstor.aarnet.edu.au/plus/s/HpPIzGgB9e950xJ) | 71.2 | [Link](https://cloudstor.aarnet.edu.au/plus/s/9MfZQHK6Nm5vkpN) | 36.6 | [Link](https://cloudstor.aarnet.edu.au/plus/s/5rsYR9KqmHj3lx3) |
 ## Getting Started
 
 ### Self-Supervised Training
