@@ -51,8 +51,8 @@ def train(epoch, train_loader, model, criterion, optimizer, cfg, tboard, logger)
         label = label.cuda()
 
 
-        for idx, frame_tensor in enumerate(data):
-            if idx == 0:
+        for i, frame_tensor in enumerate(data):
+            if i == 0:
                 output = model(frame_tensor)
             else:
                 output += model(frame_tensor)
@@ -77,7 +77,7 @@ def train(epoch, train_loader, model, criterion, optimizer, cfg, tboard, logger)
             tboard.add_scalars('Train/Top1 Acc', {'val': top1_meter.val, 'avg': top1_meter.avg}, log_step)
             tboard.add_scalars('Train/Top5 Acc', {'val': top5_meter.val, 'avg': top5_meter.avg}, log_step)
 
-            info = ('Epoch : {} ({} / {}) | '
+            info = ('Epoch : {} ({}/{}) | '
                     'BT : {:02f} ({:02f}) | '
                     'Loss: {:02f} ({:02f}) | '
                     'Top1: {:02f} ({:02f}) | '
