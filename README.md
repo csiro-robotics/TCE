@@ -68,7 +68,7 @@ The file directory should have the following layout:
             .
             ├── frame###.jpg
 ```
-Once the dataset is downloaded and split into frames, edit the following config parameters to point towards the frames and splits:
+Once the dataset is downloaded and split into frames, edit the following parameters in config/default.py to point towards the frames and splits:
 - DATASET.KINETICS400.FRAMES_PATH = /path/to/kinetics400/train
 
 ### UCF101
@@ -105,7 +105,7 @@ The file directory should have the following layout:
         ├── frame000###.jpg
 ```
 
-Once the dataset is downloaded and decompressed, edit the following config parameters to point towards the frames and splits:
+Once the dataset is downloaded and decompressed, edit the following parameters in config/default.py to point towards the frames and splits:
 - DATASET.UCF101.FRAMES_PATH = /path/to/UCF101_frames
 - DATASET.UCF101.SPLITS_PATH = /path/to/UCF101_splits
 
@@ -117,15 +117,15 @@ Once the dataset is downloaded and decompressed, edit the following config param
 
 TCE is built using Python == 3.7.1 and PyTorch == 1.7.0
 
-Setup the Python environment for this repository using Conda:
+We use Conda to setup the Python environment for this repository.  In order to create the environment, run the following commands from the root directory:
 
 ```
 conda env create -f TCE.yaml
 conda activate TCE
 ```
 
-
-
+Once this is done, also specify a path to save assets (such as dataset pickles for faster setup) to in config.default.py:
+- ASSETS_PATH = /path/to/assets/folder
 
 <a name="models"></a>
 
@@ -135,10 +135,23 @@ conda activate TCE
 ## Getting Started
 
 ### Self-Supervised Training
-TODO
+We provide a script for pre-training with the Kinetics400 dataset using TCE, pretrain.py.  To train, run the following script:
+
+```
+python finetune.py --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml  TRAIN.PRETRAINING.SAVEDIR /path/to/savedir 
+```
+
+If resuming from a previous pre-training checkpoint, set the flag `TRAIN.PRETRAINING.CHECKPOINT` to the path to the checkpoint to resume from
 
 ### Fine-tuning for action recognition
-TODO
+We provide a fine-tuning script for action recognition on the UCF-101 dataset, finetune.py.  To train, run the following script:
+
+```
+python finetune.py --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml TRAIN.FINETUNING.CHECKPOINT /path/to/pretrained_checkpoint TRAIN.FINETUNING.SAVEDIR /path/to/savedir 
+```
+
+If resuming training from an earlier finetuning checkpoint, set the flag `TRAIN.FINETUNING.RESUME` to True 
+
 
 <!-- We provide `finetune.py` for fine-tuning the network on the UCF101 action recognition dataset from an existing checkpoint, such as imagenet pre-training or our self-supervised training.
 
