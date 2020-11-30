@@ -22,7 +22,6 @@ If you find this repo useful for your research, please consider citing the paper
  ```
 
 
-
 ## Updates
 - 23/04/2020 : Initial Commit
 - 
@@ -42,7 +41,35 @@ If you find this repo useful for your research, please consider citing the paper
 ## Data Preparation 
 
 ### Kinetics400
-TODO
+Kinetics400 videos can be downloaded and split into frames directly from [Showmax/kinetics-downloader](https://github.com/Showmax/kinetics-downloader)
+
+The file directory should have the following layout:
+```
+├── kinetics400/train
+    |
+    ├── CLASS_001
+    ├── CLASS_002
+    .
+    .
+    .
+    CLASS_400
+        | 
+        ├── VID_001
+        ├── VID_002
+        .
+        .
+        .
+        ├── VID_###
+            | 
+            ├── frame1.jpg
+            ├── frame2.jpg
+            .
+            .
+            .
+            ├── frame###.jpg
+```
+Once the dataset is downloaded and split into frames, edit the following config parameters to point towards the frames and splits:
+- DATASET.KINETICS400.FRAMES_PATH = /path/to/kinetics400/train
 
 ### UCF101
 
@@ -103,7 +130,7 @@ conda activate TCE
 <a name="models"></a>
 
 ## Models
-TODO
+
 
 ## Getting Started
 
