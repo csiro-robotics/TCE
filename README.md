@@ -1,5 +1,5 @@
 # Temporally Coherent Embeddings for Self-Supervised Video Representation Learning
-This repository contains the code implementation used in the paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE_Webpage/)]  Our contributions in this repository are:
+This repository contains the code implementation used in the ICPR2020 paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE_Webpage/)]  Our contributions in this repository are:
 - A Pytorch implementation of the self-supervised training used in the TCE paper
 - A Pytorch implementation of action recognition fine-tuning
 - Pre-trained checkpoints for models trained using the TCE self-supervised training paradigm
@@ -24,7 +24,7 @@ If you find this repo useful for your research, please consider citing the paper
 
 ## Updates
 - 23/04/2020 : Initial Commit
-- 
+- 30/11/2020 : ICPR Update
 
 
 
@@ -130,7 +130,10 @@ Once this is done, also specify a path to save assets (such as dataset pickles f
 <a name="models"></a>
 
 ## Models
-TODO
+| Architecture 	| Pre-Training Dataset 	| Link                                                           	|
+|--------------	|----------------------	|----------------------------------------------------------------	|
+| ResNet-18    	| Kinetics400          	| [Link](https://cloudstor.aarnet.edu.au/plus/s/kNQKw5ATTbyamg2) 	|
+| ResNet-50    	| Kinetics400          	| [Link](https://cloudstor.aarnet.edu.au/plus/s/HbWxmhcUbfzQIQf) 	|
 
 ## Training
 
