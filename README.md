@@ -151,8 +151,8 @@ We provide a fine-tuning script for action recognition on the UCF-101 dataset, f
 ```
 python finetune.py \
     --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
-    TRAIN.FINETUNING.CHECKPOINT '/path/to/pretrained_checkpoint' \
-    TRAIN.FINETUNING.SAVEDIR '/path/to/savedir'
+    TRAIN.FINETUNING.CHECKPOINT "/path/to/pretrained_checkpoint" \
+    TRAIN.FINETUNING.SAVEDIR "/path/to/savedir"
 ```
 
 If resuming training from an earlier finetuning checkpoint, set the flag `TRAIN.FINETUNING.RESUME` to True 
@@ -183,11 +183,11 @@ To visualise the embeddings from TCE, download our self-supervised model above a
 ```
 python visualise_tsne.py
     --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
-    --target /path/to/target/video \
-    --ckpt /path/to/TCE_checkpoint \
+    --target "/path/to/target/video" \
+    --ckpt "/path/to/TCE_checkpoint" \
     --gif \
     --fps 25 \
-    --save /path/to/save/folder/t-SNE.gif
+    --save "/path/to/save/folder/t-SNE.gif"
 ```
 
 Alternatively, to visualise the t-SNE as a PNG image use the following:
@@ -195,9 +195,9 @@ Alternatively, to visualise the t-SNE as a PNG image use the following:
 ```
 python visualise_tsne.py
     --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
-    --target /path/to/target/video \
-    --ckpt /path/to/TCE_checkpoint \
-    --save /path/to/save/folder/t-SNE.png
+    --target "/path/to/target/video" \
+    --ckpt "/path/to/TCE_checkpoint" \
+    --save "/path/to/save/folder/t-SNE.png"
 ```
 
 <a name="acknowledgements"></a>
