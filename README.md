@@ -26,8 +26,6 @@ If you find this repo useful for your research, please consider citing the paper
 - 23/04/2020 : Initial Commit
 - 30/11/2020 : ICPR Update
 
-
-
 ## Table of Contents
 
 - [Data Preparation](#data-preparation)
@@ -36,9 +34,9 @@ If you find this repo useful for your research, please consider citing the paper
 - [Getting Started](#getting-started)
 - [Acknowledgements](#acknowledgements)
 
-<a name="data-preparation"></a>
 
 ## Data Preparation 
+<a name="data-preparation"></a>
 
 ### Kinetics400
 Kinetics400 videos can be downloaded and split into frames directly from [Showmax/kinetics-downloader](https://github.com/Showmax/kinetics-downloader)
@@ -111,9 +109,10 @@ Once the dataset is downloaded and decompressed, edit the following parameters i
 
 
 
-<a name="installation"></a>
+
 
 ## Installation
+<a name="installation"></a>
 
 TCE is built using Python == 3.7.1 and PyTorch == 1.7.0
 
@@ -127,15 +126,17 @@ conda activate TCE
 Once this is done, also specify a path to save assets (such as dataset pickles for faster setup) to in config.default.py:
 - ASSETS_PATH = /path/to/assets/folder
 
-<a name="models"></a>
+
 
 ## Models
+<a name="models"></a>
+
 | Architecture 	| Pre-Training Dataset 	| Link                                                           	|
 |--------------	|----------------------	|----------------------------------------------------------------	|
 | ResNet-18    	| Kinetics400          	| [Link](https://cloudstor.aarnet.edu.au/plus/s/kNQKw5ATTbyamg2) 	|
 | ResNet-50    	| Kinetics400          	| [Link](https://cloudstor.aarnet.edu.au/plus/s/HbWxmhcUbfzQIQf) 	|
 
-## Training
+## Getting Started
 
 ### Self-Supervised Training
 We provide a script for pre-training with the Kinetics400 dataset using TCE, pretrain.py.  To train, run the following script:
