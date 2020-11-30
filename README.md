@@ -165,7 +165,7 @@ If resuming training from an earlier finetuning checkpoint, set the flag `TRAIN.
 
 ### Visualisation
 
-![vid](images/video_tsne_example.gif)
+![vid](images/bowling_tsne_example.gif)
 
 In order to demonstrate the ability of our approach to create temporally coherent embeddings, we provide a package to create t-SNE visualisations of our features similar to those found in the paper.  This package can also be applied to other approaches and network architectures.
 
