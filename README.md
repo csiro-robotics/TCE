@@ -130,15 +130,17 @@ Once this is done, also specify a path to save assets (such as dataset pickles f
 <a name="models"></a>
 
 ## Models
+TODO
 
-
-## Getting Started
+## Training
 
 ### Self-Supervised Training
 We provide a script for pre-training with the Kinetics400 dataset using TCE, pretrain.py.  To train, run the following script:
 
 ```
-python finetune.py --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml  TRAIN.PRETRAINING.SAVEDIR /path/to/savedir 
+python finetune.py \
+    --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml  \
+    TRAIN.PRETRAINING.SAVEDIR /path/to/savedir 
 ```
 
 If resuming from a previous pre-training checkpoint, set the flag `TRAIN.PRETRAINING.CHECKPOINT` to the path to the checkpoint to resume from
@@ -147,36 +149,14 @@ If resuming from a previous pre-training checkpoint, set the flag `TRAIN.PRETRAI
 We provide a fine-tuning script for action recognition on the UCF-101 dataset, finetune.py.  To train, run the following script:
 
 ```
-python finetune.py --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml TRAIN.FINETUNING.CHECKPOINT /path/to/pretrained_checkpoint TRAIN.FINETUNING.SAVEDIR /path/to/savedir 
+python finetune.py \
+    --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
+    TRAIN.FINETUNING.CHECKPOINT '/path/to/pretrained_checkpoint' \
+    TRAIN.FINETUNING.SAVEDIR '/path/to/savedir'
 ```
 
 If resuming training from an earlier finetuning checkpoint, set the flag `TRAIN.FINETUNING.RESUME` to True 
 
-
-<!-- We provide `finetune.py` for fine-tuning the network on the UCF101 action recognition dataset from an existing checkpoint, such as imagenet pre-training or our self-supervised training.
-
-#### Flags
-The following flags can be used to adjust the configuration of the fine-tuning:
-- `--weights` : Path to initial pre-trained weights for fine-tuning
-- `--resume` : Path to partially fine-tuned checkpoint to resume from
-- `--savedir` : Path to save models and tensorboards to
-- `--model` : Model to use for the network backbone.  Current options are resnet18, 34, 50, 101, and 150.
-- `--split` : Choice of train/test split 01, 02, or 03.
-- `--evaluate` : Only run evaluation on a given checkpoint
-
-Additional flags can be found by looking inside `finetune.py` -->
-
-<!-- #### Inference demo with finetuned model
-Run the finetune script in evaluation mode with the following command:
-```
-python finetune.py --evaluate --model resnet50 --split 01 --resume /path/to/checkpoint.pth --savedir /path/to/savedir  -->
-
-#### Fine-tuning from a pre-trained checkpoint
-TODO
-<!-- Run the finetune script in training mode with the following command:
-```
-python finetune.py --model resnet50 --split 01 --weights /path/to/weights.pth --savedir /path/to/savedir 
-``` -->
 
 
 
@@ -184,51 +164,48 @@ python finetune.py --model resnet50 --split 01 --weights /path/to/weights.pth --
 
 ![vid](images/video_tsne_example.gif)
 
-We provide along with the trained models a package to create t-SNE visualisations similar to those found in the paper.  Our t-SNE code is capable of performing the following:
-- Demonstrating the temporal coherency of our embedding space by reducing the dimensionality of our embeddings to 2D for plotting
-- Plotting multiple input videos alongside each other
-- Plotting an input video alongside the video it is representing
+In order to demonstrate the ability of our approach to create temporally coherent embeddings, we provide a package to create t-SNE visualisations of our features similar to those found in the paper.  This package can also be applied to other approaches and network architectures.
 
-In addition, our code can be used to help create t-SNE visualisations for checkpoints and architectures other than that used in the TCE paper.  
+The files in this repository used for generating t-SNE visualisations are:
+- `visualise_tsne.py` Is a wrapper for t-SNE and our network architecture for end-to-end generation of the t-SNE
+- `utils/tsne_utils.py` Contains t-SNE functionality for reducing the dimensionality of an array of embedded features for plotting, as well as tools to create an animated visualisation of the embedding's behaviour over time
 
-The scripts in this repository used for generating t-SNE visualisations are:
-- `make_tsne.py` Is a wrapper for t-SNE and our network architecture for end-to-end generation of the t-SNE
-- `tsne_utils.py` Contains t-SNE functionality for reducing the dimensionality of an array of embedded features for plotting
-- `make_tsne_from_embedding.py` Creates a t-SNE plot from a numpy array containing the embeddings of a single video
-
-#### Flags
 The following flags can be used as inputs for `make_tsne.py`:
-- `--model` : Model to use for the network backbone.  Current options are resnet18, 34, 50, 101, and 150.
-- `--input` : Input to be plotted.  Accepts as input both video files and folders of frames.  This flag can take multiple videos as input, seperated by spaces.
-- `--vid` : If set, saves the t-SNE as an MP4 video that demonstrates the progression of the embeddings through the featurespace alongside the input video.  Only applicable when the number of input videos is one.
-- `--output` : Path to save network output to.
-- `--ckpt` : Checkpoint containing weights for the network
+- `--cfg` : Path to config file
+- `--target` : Path to video to visualise t-SNE for.  This video can either be a video file (avi, mp4) or a directory of images representing frames
+- `--ckpt` : Path to the model chekpoint to visualise the embedding space for
+- `--gif` : Use to visualise the change in the embedding space over time alongside the input video as a gif file
+- `--fps` : Set the framerate of the gif
+- `--save` : Path to save the output t-SNE to
 
-#### Visualising TCE
-To visualise the embeddings from TCE, download our self-supervised model above and use the following command to visualise our embedding space as a video:
-```
-python make_tsne.py --vid --model resnet50 --input /path/to/input --output /path/to/output.mp4 --ckpt /path/to/TCE_ckpt.pth
-```
-And the following command to visualise in a PNG image:
-```
-python make_tsne.py --model resnet50 --input /path/to/input --output /path/to/output.mp4 --ckpt /path/to/TCE_ckpt.pth
-```
-Examples of t-SNEs that can be generated using our repository can be found in images/
+To visualise the embeddings from TCE, download our self-supervised model above and use the following command to visualise our embedding space as a gif:
 
-Our visualisation package can also be used to create t-SNE visualisations of checkpoints from other network architectures.  To do so:
-1. Generate and save a numpy array containing frame embeddings for your video as an [N, D] dimensional array where N is the number of frames in the video and D is the dimensionality of the embeddings.  These embeddings should be chronologically sorted from start to finish across the 0th axis of the array
-2. Generate the t-SNE using the following command:
 ```
-python make_tsne_from_embedding.py --embeddings /path/to/embeddings --output --path/to/output.png
+python visualise_tsne.py
+    --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
+    --target /path/to/target/video \
+    --ckpt /path/to/TCE_checkpoint \
+    --gif \
+    --fps 25 \
+    --save /path/to/save/folder/t-SNE.gif
 ```
-An example of a numpy array of embedded features that can be used to generate a t-SNE this way can be downloaded from [here](https://drive.google.com/file/d/1UAvgiRU67DCII653BU8F51oZpXsuHoa2/view?usp=sharing).  Alternatively, you can write your own script to wrap your network architecture with the t-SNE and plotting functions used in this repository.
+
+Alternatively, to visualise the t-SNE as a PNG image use the following:
+
+```
+python visualise_tsne.py
+    --cfg config/pretrain_kinetics400miningr_finetune_UCF101_resnet18.yaml \
+    --target /path/to/target/video \
+    --ckpt /path/to/TCE_checkpoint \
+    --save /path/to/save/folder/t-SNE.png
+```
 
 <a name="acknowledgements"></a>
 
 
 
 ## Acknowledgements
-Part of this code is inspired by Yonglong Tian's unsupervised learning algorithm [Contrastive Multiview Coding](https://github.com/HobbitLong/CMC) and Jeffrey Huang's implementation of [action recognition](https://github.com/jeffreyyihuang/two-stream-action-recognition).
+Parts of this code base are derived from Yonglong Tian's unsupervised learning algorithm [Contrastive Multiview Coding](https://github.com/HobbitLong/CMC) and Jeffrey Huang's implementation of [action recognition](https://github.com/jeffreyyihuang/two-stream-action-recognition).
 
 
 
