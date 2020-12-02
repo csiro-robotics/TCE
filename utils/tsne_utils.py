@@ -3,6 +3,7 @@ import cv2
 import time
 import numpy as np 
 from tqdm import tqdm 
+from glob import glob 
 
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
@@ -28,7 +29,7 @@ def create_gif_frames(reduced_embeddings, target, logger):
     # ===== Set up frame loader =====
     is_folder = os.path.isdir(target)
     if is_folder:
-        imlist = sorted(glob(os.path,join(target, '*')))
+        imlist = sorted(glob(os.path.join(target, '*')))
         n_images = len(imlist)
     else:
         reader = cv2.VideoCapture(target)

@@ -6,6 +6,8 @@ import argparse
 import numpy as np
 from glob import glob 
 from tqdm import tqdm  
+from glob import glob 
+
 import matplotlib 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     # ===== Create either list of frames or videoreader object =====
     is_folder = os.path.isdir(args.target)
     if is_folder:
-        imlist = sorted(glob(os.path,join(args.target, '*')))
+        imlist = sorted(glob(os.path.join(args.target, '*')))
         n_images = len(imlist)
     else:
         reader = cv2.VideoCapture(args.target)
