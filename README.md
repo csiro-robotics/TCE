@@ -1,5 +1,5 @@
 # Temporally Coherent Embeddings for Self-Supervised Video Representation Learning
-This repository contains the code implementation used in the ICPR2020 paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE_Webpage/)]  Our contributions in this repository are:
+This repository contains the code implementation used in the ICPR2020 paper Temporally Coherent Embeddings for Self-Supervised Video Representation Learning (TCE). \[[arXiv](https://arxiv.org/abs/2004.02753)] \[[Website](https://csiro-robotics.github.io/TCE-Webpage/)]  Our contributions in this repository are:
 - A Pytorch implementation of the self-supervised training used in the TCE paper
 - A Pytorch implementation of action recognition fine-tuning
 - Pre-trained checkpoints for models trained using the TCE self-supervised training paradigm
@@ -11,14 +11,13 @@ We benchmark our code on Split 1 of the UCF101 action recognition dataset, provi
 
 If you find this repo useful for your research, please consider citing the paper
  ```
-@misc{knights2020tce,
-    title={Temporally Coherent Embeddings for Self-Supervised Video Representation Learning},
-    author={Joshua Knights and Anthony Vanderkop and Daniel Ward and Olivia Mackenzie-Ross and Peyman Moghadam},
-    year={2020},
-    eprint={2004.02753},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@inproceedings{knights2020tce,
+  title={Temporally Coherent Embeddings for Self-Supervised Video Representation Learning},
+  author={Joshua Knights and Ben Harwood and Daniel Ward and Anthony Vanderkop and Olivia Mackenzie-Ross and Peyman Moghadam},
+ booktitle={25th International Conference on Pattern Recognition (ICPR)},
+  year={2020}
 }
+
  ```
 
 
